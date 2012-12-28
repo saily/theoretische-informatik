@@ -1,0 +1,195 @@
+% Daniel Widerin
+\documentclass[10pt,oneside,a4paper]{scrartcl}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[fleqn]{amsmath}
+\usepackage{lmodern}
+
+\usepackage{anysize}
+\marginsize{2cm}{1cm}{1cm}{1cm}
+
+\usepackage{setspace}
+\onehalfspacing
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+%\fancyhf{}
+%\fancyhead[L]{Formelsammlung ``Theoretische Informatik``}
+%\fancyhead[C]{\today}
+%\fancyfoot[R]{\thepage}
+
+\begin{document}
+
+\section{Mengen}
+
+    \begin{align}
+    &cf_A :\mathbb{N} \longrightarrow \mathbb{N}
+        && \text{rekursive (entscheidbare) Funktion, wenn berechenbar}\\
+        &&&: \text{ wird gesprochen: $cf_A$ total von $A$ nach $B$}\nonumber\\
+    &df_A :\subseteq \mathbb{N} \longrightarrow \mathbb{N}
+        && \text{rekursiv aufzählbare Funktion, wenn berechenbar}\\
+        &&&:\subseteq \text{ wird gesprochen: $df_A$ partiell von $A$ nach $B$}
+        \nonumber\\
+    &\perp && \text{Undefiniert}
+    \end{align}
+
+\section{Flussdiagramme}
+
+    \begin{align}
+    &F   && \text{Flussdiagramm}\nonumber\\
+            &&&F = (Q, D, \sigma, q_0)\\
+    &KON && \text{Menge der Konfigurationen}\nonumber\\
+            &&&KON := Q x D\\
+    &ES  && \text{Einzelschrittfunktion}\nonumber\\
+            &&&ES :\subseteq KON \longrightarrow KON\\
+    &SZ  && \text{Schrittzahlfunktion}\nonumber\\
+            &&&SZ :\subseteq KON \longrightarrow \mathbb{N}\\
+    &GS  && \text{Gesamtfunktion}\nonumber\\
+            &&&GS :\subseteq KON \longrightarrow KON\\
+    &f   && \text{Funktion die das Flussdiagramm berechnet}\nonumber\\
+            &&&f_F :\subseteq D \longrightarrow D\\
+    &\vdash^{*}_{F}
+         && \text{Übergangsrelation}\\
+            &&&\kappa_{1} \text{ geht über in }\kappa_{2}\nonumber\\
+            &&&\kappa_{1}, \kappa_{2} \in KON\nonumber
+    \end{align}
+
+\section{Maschinen}
+
+    \begin{align}
+    &M   && \text{Maschine}\nonumber\\
+            &&&M = (F, X, Y, EC, AC)\\
+    &X   && \text{Eingabemenge}\nonumber\\
+    &Y   && \text{Ausgabemenge}\nonumber\\
+    &EC  && \text{Eingabekodierung}\nonumber\\
+            &&&EC : X \longrightarrow D\\
+    &AC  && \text{Ausgabekodierung}\nonumber\\
+            &&&AC : D \longrightarrow Y\\
+    &f_M && \text{Funktion die die Maschine berechnet}\nonumber\\
+            &&&f_M := X \longrightarrow Y\\
+            &&&f_M := AC \circ f_F \circ EC
+    \end{align}
+
+\section{Berechenbare Zahlenfunktionen}
+
+    \begin{align}
+    &\tilde{0} : \mathbb{N}^0\longrightarrow \mathbb{N}, \tilde{0}() := 0
+        && \text{nullstellige Nullfunktion}\\
+    &Z : \mathbb{N}\longrightarrow \mathbb{N}, Z(x) := 0
+        && \text{einstellige Nullfunktion}\\
+    &S : \mathbb{N}\longrightarrow \mathbb{N}, S(x) := x+1
+        && \text{Nachfolgerfunktion (Successor)}\\
+    &V : \mathbb{N}\longrightarrow \mathbb{N}, V(x) := x \dotminus 1
+        && \text{Vorgängerfunktion}\\
+    &pr_i^{(k)} : \mathbb{N}^k\longrightarrow \mathbb{N},
+        pr_i^{(k)}(x_1, \ldots, x_k) := x_i \text{ für $1\leq i\leq k$}
+        && \text{Projektion}\\
+    &f(x_1, \ldots, x_n) := k \text{ für } n, k \in \mathbb{N}
+        && \text{konstante Funktion}\\
+    &f(x, y) := x+y && \text{Summe}\\
+    &f(x, y) := x \dotminus y && \text{arithmetische Differenz}\\
+    &f(x, y) := x \cdot y && \text{Produkt}\\
+    &q,r \subseteq\mathbb{N}^2\longrightarrow \mathbb{N}
+        \text{ mit } x = q(x, y)\cdot q+r(x, y)\nonumber\\
+        &\hspace{5mm}\text{ und } r(x, y) < y \text{ für } y \neq 0\nonumber\\
+        &\hspace{5mm}\text{ und } q(x, y) = r(x, y) = div \text{ für } y = 0
+        && \text{Quotient}\\
+    &f(x, y) := x^y mit 0^0 := 1 && \text{Exponentiation}\\
+    &f(x) := \left(\sqrt{x} \text{ falls $x$ Quadratzahl, $div$ sonst}\right)\\
+    &max(x, y)\\
+    &min(x, y)\\
+    &f(x) := \left(1 \text{ falls $x$ Primzahl, $0$ sonst}\right)\\
+    &f(x) := \text{ die $x$-te Primzahl}\\
+    &f(x, y) := \left(1 \text{ falls $x<y, 0$ sonst}\right)
+        && \text{Entsprechend für $\leq, =, \geq, >, \neq$.}\\
+    &f(x) := \left(0 \text{ falls $x\in A, 1$ sonst}\right)
+        && \text{für }A\subseteq\mathbb{N}\text{ endlich. }\\
+    &f(x) := (\text{die kleinste Zahl $y$ mit $g(y) = x$}\nonumber\\
+        &\hspace{13mm}\text{ falls $x\in Bild(g), div$ sonst} )
+        && \text{für }g:\mathbb{N}\longrightarrow \mathbb{N}
+           \text{ berechenbar.}\\
+    &f(x) := max\left\{y | g(y) \leq x\right\}
+        && \text{für }g:\mathbb{N}\longrightarrow \mathbb{N}
+           \text{ berechenbar,}\nonumber\\
+        &&& \text{und es gelte $(\forall y) g(y) < g(y+1)$}\\
+    &f(x, y) := ggT(x, y) \text{ falls $x, y > 0, f(a, b) := 0$ sonst}
+    \end{align}
+
+    \subsection{Cantorsche Paarungsfunktion}
+
+    \begin{align}
+    &\pi : \mathbb{N}^2 \longrightarrow \mathbb{N}
+            &&\text{Cantorsche Tuplefunktion ist bijektiv}\nonumber\\
+            &&&\pi(x, y) = \sum^{x+y}_{i = 0} i+y =\frac{1}{2}(x+y)(x+y+1)+y\\
+            &&&\text{für alle $x, y \in \mathbb{N}$.}\nonumber\\
+    &\pi^{(k)} : \mathbb{N}^k \longrightarrow \mathbb{N}\nonumber &&\\
+            &&&\pi^{(1)}(x) := x\nonumber\\
+            &&&\pi^{(k+1)}(x_1, \ldots, x_{k+1}) :=
+               \pi (\pi^{(k)}(x_1, \ldots, x_k), x_{k+1})\\
+            &&&\text{für alle $k, x, x_1, \ldots, x_{k+1} \in \mathbb{N}$ mit}
+               \text{$k \geq 1$.}\nonumber\\
+    \end{align}
+
+    %\subsubsection{Umkehrfunktion}
+
+    \begin{align}
+    &\langle x_1, \ldots, x_k\rangle := \pi^{(k)}(x_1, \ldots, x_k)\\
+    &\pi^{(k)} && \text{ist bijektiv und berechenbar}\\
+    &\pi_i^{(k)} := pr_i^{(k)}(\pi^{(k)})^{-1}
+        && \text{ist berechenbar für jedes $i$ mit $1 \leq i \leq k$.}\\
+    &\pi_1 := \pi_1^{(2)}\text{, }\pi_2 := \pi_2^{(2)}
+        && \text{Kurzschreibweise}\nonumber\\
+    \nonumber\\
+    &f(\omega) := \sum_{i=0}^{\omega} i = \frac{1}{2} \omega (\omega+1)\\
+    &q(z) := max\{v|f(v) \leq z\}
+    \end{align}
+
+\subsection{Eigenschaften berechenbarer Zahlenfunktionen}
+
+    \begin{align}
+    &P^{(k)} &&:= \left\{f :\subseteq\mathbb{N}^k\longrightarrow
+        \mathbb{N} | f \text{ berechenbar}\right\}\\
+    &R^{(k)} &&:= \left\{f :\mathbb{N}^k\longrightarrow
+        \mathbb{N} | f \text{ berechenbar}\right\}\\
+    &P &&:= \bigcup_{k\in\mathbb{N}} P^{(k)}
+        && \text{berechenbar bzw. partiell rekursiv}\\
+    &R &&:= \bigcup_{k\in\mathbb{N}} R^{(k)}
+        && \text{total berechenbar bzw. total rekursiv}\\
+    \end{align}
+
+    \begin{align}
+    &Sub(g, h_1, \ldots, h_m) :\subseteq\mathbb{N}^k\longrightarrow \mathbb{N}
+        &&Sub(g, h_1, \ldots, h_m)(\bar{x}) := g(h_1(\bar{x}), \ldots,
+            h_m(\bar{x}))\\
+    &g:\mathbb{N}^{k}\longrightarrow \mathbb{N} && f(\bar{x}, 0) = g(\bar{x})\\
+    &h:\mathbb{N}^{k+2}\longrightarrow \mathbb{N} && f(\bar{x}, y+1) = h(
+        \bar{x}, y, f(\bar{x}, y))\\
+    &Prk(g,h) f : \mathbb{N}^{k+1} \longrightarrow \mathbb{N}
+        &&\tilde{\mu}(h)(\bar{x}) = \mu y \left[ h(\bar{x}, y) = 0 \right]
+    \end{align}
+
+\section{Primitiv rekursive Funktionen}
+
+    \begin{align}
+    &Gr := \left\{\tilde{0}, Z, S\right\} \cup
+           \left\{pr_i^{(k)}|i,k\in\mathbb{N}, 1\leq i\leq k\right\}
+        && \text{Menge der primitiv-rekursiven Grundfunktionen (PRK)}
+    \end{align}
+
+    \begin{align}
+    &c_n^{(k)} : \mathbb{N}\longrightarrow \mathbb{N},
+        c_n^{(k)}(x_1,\ldots,x_k) := n \text{ für alle }k,n\in\mathbb{N}
+        && \text{konstante Funktionen}\\
+    &s : \mathbb{N}^2\longrightarrow \mathbb{N}, s(x, y) := x+y
+        && \text{Summe}\\
+    &V : \mathbb{N}\longrightarrow \mathbb{N}, V(x) := x \dotminus -1
+        && \text{Vorgängerfunktion}\\
+    &d : \mathbb{N}^2\longrightarrow \mathbb{N}, d(x, y) := x \dotminus y
+        && \text{arithmetische Differenz}\\
+    &m : \mathbb{N}^2\longrightarrow \mathbb{N}, m(x, y) := x \cdot y
+        && \text{Multiplikation}
+    \end{align}
+
+\end{document}
