@@ -25,13 +25,14 @@
 \section{Mengen}
 
     \begin{align}
-    &cf_A :\mathbb{N} \longrightarrow \mathbb{N}
+    &\text{cf}_A :\mathbb{N} \longrightarrow \mathbb{N}
         && \text{rekursive (entscheidbare) Funktion, wenn berechenbar}\\
-        &&&: \text{ wird gesprochen: $cf_A$ total von $A$ nach $B$}\nonumber\\
-    &df_A :\subseteq \mathbb{N} \longrightarrow \mathbb{N}
-        && \text{rekursiv aufzählbare Funktion, wenn berechenbar}\\
-        &&&:\subseteq \text{ wird gesprochen: $df_A$ partiell von $A$ nach $B$}
+        &&&: \text{wird gesprochen: $\text{cf}_A$ total von $A$ nach $B$}
         \nonumber\\
+    &\text{df}_A :\subseteq \mathbb{N} \longrightarrow \mathbb{N}
+        && \text{rekursiv aufzählbare Funktion, wenn berechenbar}\\
+        &&&:\subseteq \text{wird gesprochen: $\text{df}_A$ partiell von $A$
+        nach $B$}\nonumber\\
     &\perp && \text{Undefiniert}
     \end{align}
 
@@ -190,6 +191,16 @@
         && \text{arithmetische Differenz}\\
     &m : \mathbb{N}^2\longrightarrow \mathbb{N}, m(x, y) := x \cdot y
         && \text{Multiplikation}
+    \end{align}
+
+\section{Rekursive Mengen}
+
+\subsection{Reduzierbarkeit}
+
+    \begin{align}
+    &A \leq B \Longleftrightarrow \exists f \in R^{(1)}.A=f^{-1}[B]
+        && \text{$A, B \subseteq\mathbb{N}$. $A$ ist reduzierbar auf $B$.}\\
+    &A \leq B \Longleftrightarrow \text{cf}_A\leq cf_B
     \end{align}
 
 \end{document}
