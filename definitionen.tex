@@ -270,4 +270,23 @@
         && \text{sprich: ``klein oh von g''}
     \end{align}
 
+\section{Komplexitätsklassen}
+    Sei $f : \mathbb{N}\longrightarrow\mathbb{N}$ eine (totale) Funktion,
+    $\Sigma$ ein Alphabet.
+    \begin{align}
+    &\textsf{ZEIT}_{\Sigma}(f) := \left\{
+        L_M | M \text{ Turingmaschine über }
+        \Sigma, \tilde{t}_M \in O(f)\right\}\\
+    &\textsf{FZEIT}_{\Sigma}(f) := \left\{
+        L_M | M \text{ Turingmaschine über }
+        \Sigma, \tilde{t}_M \in O(f)\right\}\\
+    &\textsf{BAND}_{\Sigma}(f) := \left\{
+        L_M | M \text{ Turingmaschine über }
+        \Sigma, \tilde{s}_M \in O(f)\right\}\\
+    &\textsf{FBAND}_{\Sigma}(f) := \left\{
+        L_M | M \text{ Turingmaschine über }
+        \Sigma, \tilde{s}_M \in O(f)\right\}\\
+    &\textsf{ZEIT}(f) := \bigcup_{\Sigma}{\textsf{ZEIT}_{\Sigma}(f)}
+    \end{align}
+
 \end{document}
