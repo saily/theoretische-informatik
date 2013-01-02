@@ -100,25 +100,47 @@
         &\hspace{5mm}\text{ und } r(x, y) < y \text{ für } y \neq 0\nonumber\\
         &\hspace{5mm}\text{ und } q(x, y) = r(x, y) = div \text{ für } y = 0
         && \text{Quotient}\\
-    &f(x, y) := x^y mit 0^0 := 1 && \text{Exponentiation}\\
-    &f(x) := \left(\sqrt{x} \text{ falls $x$ Quadratzahl, $div$ sonst}\right)\\
+    &f(x, y) := x^y \text{ mit } 0^0 := 1 && \text{Exponentiation}\\
+    &f(x) := \left\{
+        \begin{array}{ll}
+        \sqrt{x} & \text{falls $x$ Quadratzahl}\\
+        div & \text{sonst}
+        \end{array}\right\\
     &max(x, y)\\
     &min(x, y)\\
-    &f(x) := \left(1 \text{ falls $x$ Primzahl, $0$ sonst}\right)\\
+    &f(x) := \left\{
+        \begin{array}{ll}
+        1 & \text{falls $x$ Primzahl}\\
+        0 & \text{sonst}
+        \end{array}\right\\
     &f(x) := \text{ die $x$-te Primzahl}\\
-    &f(x, y) := \left(1 \text{ falls $x<y, 0$ sonst}\right)
+    &f(x, y) := \left\{
+        \begin{array}{ll}
+        1 & \text{falls }x<y\\
+        0 & \text{sonst}
+        \end{array}\right
         && \text{Entsprechend für $\leq, =, \geq, >, \neq$.}\\
-    &f(x) := \left(0 \text{ falls $x\in A, 1$ sonst}\right)
+    &f(x) := \left\{\begin{array}{ll}
+        0 & \text{falls } x\in A\\
+        1 & \text{sonst}
+        \end{array}\right
         && \text{für }A\subseteq\mathbb{N}\text{ endlich. }\\
-    &f(x) := (\text{die kleinste Zahl $y$ mit $g(y) = x$}\nonumber\\
-        &\hspace{13mm}\text{ falls $x\in Bild(g), div$ sonst} )
+    &f(x) := \left\{\begin{array}{ll}
+        \text{die kleinste Zahl $y$ mit $g(y) = x$} &
+        \text{falls }x\in \text{Bild}(g)\\
+        div & \text{sonst}
+        \end{array}\right
         && \text{für }g:\mathbb{N}\longrightarrow \mathbb{N}
            \text{ berechenbar.}\\
     &f(x) := max\left\{y | g(y) \leq x\right\}
         && \text{für }g:\mathbb{N}\longrightarrow \mathbb{N}
            \text{ berechenbar,}\nonumber\\
         &&& \text{und es gelte $(\forall y) g(y) < g(y+1)$}\\
-    &f(x, y) := ggT(x, y) \text{ falls $x, y > 0, f(a, b) := 0$ sonst}
+    &f(x, y) := \left\{
+        \begin{array}{ll}
+        ggT(x, y) & \text{falls }x, y > 0\\
+        0 & \text{sonst}
+        \end{array}\right
     \end{align}
 
     \subsection{Cantorsche Paarungsfunktion}
@@ -188,7 +210,7 @@
         && \text{konstante Funktionen}\\
     &s : \mathbb{N}^2\longrightarrow \mathbb{N}, s(x, y) := x+y
         && \text{Summe}\\
-    &V : \mathbb{N}\longrightarrow \mathbb{N}, V(x) := x \dotminus -1
+    &V : \mathbb{N}\longrightarrow \mathbb{N}, V(x) := x \dotminus 1
         && \text{Vorgängerfunktion}\\
     &d : \mathbb{N}^2\longrightarrow \mathbb{N}, d(x, y) := x \dotminus y
         && \text{arithmetische Differenz}\\
