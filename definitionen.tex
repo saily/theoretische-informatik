@@ -44,8 +44,12 @@
 \section{Flussdiagramme}
 
     \begin{align}
+     & Q        && \text{ Menge der Marken} \\
+     & D        && \text{Datenmenge}\\
+     & q_0     &&  \text{Anfangsmarke} \\
+     & \sigma && \text{Funktion: Zuweisung, Verzweigung oder HALT}\\
     &F   && \text{Flussdiagramm}\nonumber\\
-            &&&F = (Q, D, \sigma, q_0)\\
+            &&&F = (Q, D, \sigma, q_0)
     &KON && \text{Menge der Konfigurationen}\nonumber\\
             &&&KON := Q x D\\
     &ES  && \text{Einzelschrittfunktion}\nonumber\\
@@ -56,7 +60,7 @@
             &&&GS :\subseteq KON \longrightarrow KON\\
     &f   && \text{Funktion die das Flussdiagramm berechnet}\nonumber\\
             &&&f_F :\subseteq D \longrightarrow D\\
-    &\vdash^{*}_{F}
+    & \kappa_{1} \vdash^{*}_{F} \kappa_{2}, \text{ kurz }  \vdash^{*}_{F}
          && \text{Übergangsrelation}\\
             &&&\kappa_{1} \text{ geht über in }\kappa_{2}\nonumber\\
             &&&\kappa_{1}, \kappa_{2} \in KON\nonumber
@@ -73,7 +77,7 @@
             &&&EC : X \longrightarrow D\\
     &AC  && \text{Ausgabekodierung}\nonumber\\
             &&&AC : D \longrightarrow Y\\
-    &f_M && \text{Funktion die die Maschine berechnet}\nonumber\\
+    &f_M && \text{Funktion die, die Maschine berechnet}\nonumber\\
             &&&f_M := X \longrightarrow Y\\
             &&&f_M := AC \circ f_F \circ EC
     \end{align}
@@ -107,31 +111,31 @@
         \begin{array}{ll}
         \sqrt{x} & \text{falls $x$ Quadratzahl}\\
         div & \text{sonst}
-        \end{array}\right\\
+        \end{array}\right.\\
     &max(x, y)\\
     &min(x, y)\\
     &f(x) := \left\{
         \begin{array}{ll}
         1 & \text{falls $x$ Primzahl}\\
         0 & \text{sonst}
-        \end{array}\right\\
+        \end{array}\right.\\
     &f(x) := \text{ die $x$-te Primzahl}\\
     &f(x, y) := \left\{
         \begin{array}{ll}
         1 & \text{falls }x<y\\
         0 & \text{sonst}
-        \end{array}\right
+        \end{array}\right.
         && \text{Entsprechend für $\leq, =, \geq, >, \neq$.}\\
     &f(x) := \left\{\begin{array}{ll}
         0 & \text{falls } x\in A\\
         1 & \text{sonst}
-        \end{array}\right
+        \end{array}\right.
         && \text{für }A\subseteq\mathbb{N}\text{ endlich. }\\
     &f(x) := \left\{\begin{array}{ll}
         \text{die kleinste Zahl $y$ mit $g(y) = x$} &
         \text{falls }x\in \text{Bild}(g)\\
         div & \text{sonst}
-        \end{array}\right
+        \end{array}\right.
         && \text{für }g:\mathbb{N}\longrightarrow \mathbb{N}
            \text{ berechenbar.}\\
     &f(x) := max\left\{y | g(y) \leq x\right\}
@@ -142,7 +146,7 @@
         \begin{array}{ll}
         ggT(x, y) & \text{falls }x, y > 0\\
         0 & \text{sonst}
-        \end{array}\right
+        \end{array}\right.
     \end{align}
 
     \subsection{Cantorsche Paarungsfunktion}
@@ -178,15 +182,18 @@
 
     \begin{align}
     &P^{(k)} &&:= \left\{f :\subseteq\mathbb{N}^k\longrightarrow
-        \mathbb{N} | f \text{ berechenbar}\right\}\\
+        \mathbb{N} | f \text{ berechenbar}\right\} 
+                  && \text{Menge der k-stelligen berechenbaren Funktionen} \\
     &R^{(k)} &&:= \left\{f :\mathbb{N}^k\longrightarrow
-        \mathbb{N} | f \text{ berechenbar}\right\}\\
+        \mathbb{N} | f \text{ berechenbar}\right\}
+                  && \text{Menge der k-stelligen total rekursiven Funktionen}\\
     &P &&:= \bigcup_{k\in\mathbb{N}} P^{(k)}
         && \text{berechenbar bzw. partiell rekursiv}\\
     &R &&:= \bigcup_{k\in\mathbb{N}} R^{(k)}
         && \text{total berechenbar bzw. total rekursiv}\\
     \end{align}
 
+    \text{primitive Rekursion, $\mu$-Rekursion:}
     \begin{align}
     &Sub(g, h_1, \ldots, h_m) :\subseteq\mathbb{N}^k\longrightarrow \mathbb{N}
         &&Sub(g, h_1, \ldots, h_m)(\bar{x}) := g(h_1(\bar{x}), \ldots,
@@ -197,6 +204,7 @@
     &Prk(g,h) f : \mathbb{N}^{k+1} \longrightarrow \mathbb{N}
         &&\tilde{\mu}(h)(\bar{x}) = \mu y \left[ h(\bar{x}, y) = 0 \right]
     \end{align}
+    \text{$f$ entsteht aus $g$ und $h$ durch primitive Reklursion} 
 
 \section{Primitiv rekursive Funktionen}
 
@@ -230,6 +238,31 @@
     &A \leq B \Longleftrightarrow \text{cf}_A\leq cf_B
     \end{align}
 
+
+\section{Grundbegriffe und Symbole}
+
+    \begin{align}
+    & \mathbb{N} && \text{ natürliche Zahlen inklusive Null} &&\\
+    &  \lfloor x \rfloor (  bzw. \lceil x \rceil )
+          && \text{  größte (kleinste) Zahl } z \in \mathbb{Z }
+                \text{ mit z } \le x ( \text{ mit z } \ge x)\\  % Seite 13 Skript 01657
+    & card [ \text{ M } ]
+         && \text{ Kardinalität; Anzahl der Elemente in M }   \\ % Seite 13 Skript 01657
+    & 2^\text{M}
+         && \text{ Potenzmenge; Menge}  \{A | A \subseteq M \}  \text{ aller Teilmengen} \\
+    & \text{n-stellige Relation auf X}
+         &&   \text{Teilmenge } Q\subseteq X^n\\
+    & \rho \subseteq X \times Y 
+         && \text{  binäre Relation}\\
+    &  \rho \subseteq X \times Y  \text{ rechtseindeutig}
+         &&  (\forall x \in X)(\forall y,y' \in Y) [ (x\rho y \wedge x \rho y') \Rightarrow y = y' ] \\
+    & (A,B,\rho)
+         && \text{Korrespondenz f; A,B Mengen,} \rho \subseteq X \times Y  \text{ Relation  }\\
+   & \Sigma, \Sigma^* && \text{ Alphabet, Wörter } \\
+   & \phi && \text{Standardnummerierung} \\
+   & \Phi && \text{Standardkomplexität } \\
+    \end{align}
+
 \pagebreak
 
 \part{Theoretische Informatik B}
@@ -243,14 +276,14 @@
         && \text{Rechenzeit, Zeitkomplexität von $M$}\\
     &s_M := \sum_{i=0}^{k+1} (lg(u_i) + lg(v_i) + 1)
         &&\text{Bandbedarf, Bandkomplexität oder Speicherkomplexität von $M$}\\
-    &\tilde{t_M}(n) := max\left\{t_M(x) | x\in\Sigma^n\right\}
+    &\tilde{t_M}(n) := max\left\{t_M(x) | x\in\Sigma^n\right\}
         &&\text{und }\tilde{t_M}:\subseteq\mathbb{N}\longrightarrow\mathbb{N}\\
-    &\tilde{s_M}(n) := max\left\{s_M(x) | x\in\Sigma^n\right\}
+    &\tilde{s_M}(n) := max\left\{s_M(x) | x\in\Sigma^n\right\}
         &&\text{und }\tilde{s_M}:\subseteq\mathbb{N}\longrightarrow\mathbb{N}\\
     &\log{n} := \left\{\begin{array}{ll}
         1 & \text{falls }n=0\\
         \lfloor\log_2{n}\rfloor + 1 & \text{sonst}
-    \end{array}\right
+    \end{array}\right.
         && \text{Zahl der Ziffern der Dualnotation von $n$}
     \end{align}
 
@@ -258,13 +291,13 @@
 
     Sei $g : \mathbb{N}\longrightarrow\mathbb{N}$ eine (totale) Funktion.
     \begin{align}
-    &O(g) := \left\{f | f : \mathbb{N}\longrightarrow\mathbb{N},
+    &O(g) := \left\{f | f : \mathbb{N}\longrightarrow\mathbb{N},
                     \exists c \in \mathbb{N} .
                     \forall n \in \mathbb{N} .
                     f(n) \leq c \cdot g(n) + c
              \right\}
         && \text{sprich: ``groß Oh von g''}\\
-    &o(g) := \left\{f | f : \mathbb{N}\longrightarrow\mathbb{N},
+    &o(g) := \left\{f | f : \mathbb{N}\longrightarrow\mathbb{N},
                     \lim_{n\rightarrow\infty} \frac{f(n) + 1}{g(n) + 1} = 0
              \right\}
         && \text{sprich: ``klein oh von g''}
@@ -275,16 +308,16 @@
     $\Sigma$ ein Alphabet.
     \begin{align}
     &\textsf{ZEIT}_{\Sigma}(f) := \left\{
-        L_M | M \text{ Turingmaschine über }
+        L_M | M \text{ Turingmaschine über }
         \Sigma, \tilde{t}_M \in O(f)\right\}\\
     &\textsf{FZEIT}_{\Sigma}(f) := \left\{
-        L_M | M \text{ Turingmaschine über }
+        L_M | M \text{ Turingmaschine über }
         \Sigma, \tilde{t}_M \in O(f)\right\}\\
     &\textsf{BAND}_{\Sigma}(f) := \left\{
-        L_M | M \text{ Turingmaschine über }
+        L_M | M \text{ Turingmaschine über }
         \Sigma, \tilde{s}_M \in O(f)\right\}\\
     &\textsf{FBAND}_{\Sigma}(f) := \left\{
-        L_M | M \text{ Turingmaschine über }
+        L_M | M \text{ Turingmaschine über }
         \Sigma, \tilde{s}_M \in O(f)\right\}\\
     &\textsf{ZEIT}(f) := \bigcup_{\Sigma}{\textsf{ZEIT}_{\Sigma}(f)}
     \end{align}
